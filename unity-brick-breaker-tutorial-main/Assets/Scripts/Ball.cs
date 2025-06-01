@@ -18,7 +18,7 @@ public class Ball : MonoBehaviour
 
     public void ResetBall()
     {
-        rigidbody.velocity = Vector2.zero;
+        rigidbody.linearVelocity = Vector2.zero;
         transform.position = Vector2.zero;
 
         Invoke(nameof(SetRandomTrajectory), 1f);
@@ -35,7 +35,7 @@ public class Ball : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rigidbody.velocity = rigidbody.velocity.normalized * speed;
+        rigidbody.linearVelocity = rigidbody.linearVelocity.normalized * speed;
     }
 
 }

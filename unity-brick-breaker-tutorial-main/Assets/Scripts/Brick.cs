@@ -44,7 +44,10 @@ public class Brick : MonoBehaviour
             spriteRenderer.sprite = states[health - 1];
         }
 
-        FindObjectOfType<GameManager>().Hit(this);
+        // --- LINHA CORRIGIDA AQUI ---
+        // Era: FindObjectOfType<GameManager>().Hit(this);
+        // Agora:
+        FindFirstObjectByType<GameManager>().Hit(this);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

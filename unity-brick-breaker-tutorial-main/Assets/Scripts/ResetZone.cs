@@ -1,11 +1,14 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(Collider2D))]
+[RequireComponent(typeof(Collider2D))] // Garantindo que haja um Collider2D
 public class ResetZone : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D other)
     {
-        FindObjectOfType<GameManager>().Miss();
+        // --- LINHA CORRIGIDA AQUI ---
+        // Era: FindObjectOfType<GameManager>().Miss();
+        // Agora:
+        FindFirstObjectByType<GameManager>().Miss();
     }
 
 }

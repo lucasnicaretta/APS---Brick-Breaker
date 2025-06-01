@@ -20,7 +20,7 @@ public class Paddle : MonoBehaviour
 
     public void ResetPaddle()
     {
-        rigidbody.velocity = Vector2.zero;
+        rigidbody.linearVelocity = Vector2.zero;
         transform.position = new Vector2(0f, transform.position.y);
     }
 
@@ -54,12 +54,12 @@ public class Paddle : MonoBehaviour
             float offset = paddlePosition.x - contactPoint.x;
             float maxOffset = collision.otherCollider.bounds.size.x / 2;
 
-            float currentAngle = Vector2.SignedAngle(Vector2.up, ball.rigidbody.velocity);
+            float currentAngle = Vector2.SignedAngle(Vector2.up, ball.rigidbody.linearVelocity);
             float bounceAngle = (offset / maxOffset) * maxBounceAngle;
             float newAngle = Mathf.Clamp(currentAngle + bounceAngle, -maxBounceAngle, maxBounceAngle);
 
             Quaternion rotation = Quaternion.AngleAxis(newAngle, Vector3.forward);
-            ball.rigidbody.velocity = rotation * Vector2.up * ball.rigidbody.velocity.magnitude;
+            ball.rigidbody.linearVelocity = rotation * Vector2.up * ball.rigidbody.linearVelocity.magnitude;
         }
     }
 

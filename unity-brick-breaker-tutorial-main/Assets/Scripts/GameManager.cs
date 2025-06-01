@@ -49,9 +49,11 @@ public class GameManager : MonoBehaviour
 
     private void OnLevelLoaded(Scene scene, LoadSceneMode mode)
     {
-        ball = FindObjectOfType<Ball>();
-        paddle = FindObjectOfType<Paddle>();
-        bricks = FindObjectsOfType<Brick>();
+        ball = FindFirstObjectByType<Ball>();
+        paddle = FindFirstObjectByType<Paddle>();
+        // --- LINHA CORRIGIDA AQUI NOVAMENTE ---
+        // Era: bricks = FindObjectsByType<Brick>();
+        bricks = FindObjectsByType<Brick>(FindObjectsSortMode.None); // ADICIONADO O ARGUMENTO FindObjectsSortMode.None
     }
 
     public void Miss()
